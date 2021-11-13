@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 .scheduleSection .title {
-  margin: auto;
+  margin: 0 auto;
 }
 .scheduleSection .scheduleList {
   padding: 0 2rem;
