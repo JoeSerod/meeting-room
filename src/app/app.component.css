@@ -4,6 +4,13 @@
 .mat-mini-fab.mat-primary {
   background-color: #0e9abd;
 }
+.app-body {
+  display: flex;
+}
+.app-body div {
+  margin-right: auto;
+  width: 100%;
+}
 .appHeader {
   background-color: white;
   padding: 20px;
