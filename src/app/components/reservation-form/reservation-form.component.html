@@ -2,6 +2,10 @@
     <h1>Reservar horario</h1>
     <ngx-timepicker-field [defaultTime]="'11:11 am'" 
         [controlOnly]="true"
-        (timeChanged)="onChangeStartTime($event)"
+        (timeChanged)="onChangeStartTime($event, 'start')"
+    ></ngx-timepicker-field>
+    <ngx-timepicker-field [defaultTime]="'11:11 am'" 
+        [controlOnly]="true"
+        (timeChanged)="onChangeStartTime($event, 'end')"
     ></ngx-timepicker-field>
 </form>
