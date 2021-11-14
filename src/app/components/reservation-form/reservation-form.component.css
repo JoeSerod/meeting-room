@@ -1,0 +1,26 @@
+.newReservationButton {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2895c0;
+  color: white;
+  border: 0px;
+  padding: 1rem;
+  font-size: 1rem;
+  box-shadow: 1px 1px 10px 1px #acacac;
+  font-weight: 600;
+  transition: 0.5s;
+}
+.newReservationButton:hover {
+  cursor: pointer;
+  background-color: #40a5ce;
+  box-shadow: 1px 1px 13px 5px grey ;
+  transition: 0.5s;
+}
+.mat-dialog-container {
+  background-color: white!important;
+}

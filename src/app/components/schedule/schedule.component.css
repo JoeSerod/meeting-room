@@ -1,0 +1,21 @@
+.scheduleSection {
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.scheduleSection .title {
+  margin: 0 auto;
+}
+.scheduleSection .scheduleList {
+  padding: 0 2rem;
+}
+.scheduleSection .scheduleList ul {
+  list-style: none;
+}
+.scheduleSection .scheduleList ul li {
+  background-color: #dddddd;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 1rem;
+}
