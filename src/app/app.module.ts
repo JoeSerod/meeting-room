@@ -11,6 +11,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {SelectDateService} from "./services/selectDate.service"
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SelectDateService
   ],
   bootstrap: [AppComponent]
 })
