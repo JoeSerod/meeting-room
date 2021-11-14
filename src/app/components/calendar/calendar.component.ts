@@ -11,5 +11,9 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onSelect(event){
+    this.selected = event;
+    console.log(event);
+    
+  }
 }

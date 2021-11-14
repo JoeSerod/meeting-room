@@ -1,5 +1,5 @@
 <section>
     <div class="calendar">
-        <mat-calendar (selectedChange)="selected = $event"></mat-calendar>
+        <mat-calendar [selected]="selected" (selectedChange)="onSelect($event)"></mat-calendar>
     </div>
 </section>
