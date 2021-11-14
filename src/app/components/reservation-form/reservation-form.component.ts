@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectDateService } from 'src/app/services/selectDate.service';
-
+import {Reservation} from "../../models/reservation.model";
 @Component({
   selector: 'reservation-form',
   templateUrl: './reservation-form.component.html',
@@ -12,10 +12,14 @@ export class ReservationFormComponent implements OnInit {
   name: String;
   startDate: Date;
   endDate: Date;
+  reservationFormModel :Reservation;
+
   constructor(
     public dialog: MatDialog,
     private selectDateService :SelectDateService
-  ) { }
+  ) {
+    this.reservationFormModel = new Reservation("",new Date(), new Date());
+   }
 
   ngOnInit(): void {
     this.selectDateService.currentDate.subscribe(date=>{
@@ -51,6 +55,14 @@ export class ReservationFormComponent implements OnInit {
     
    
    
+    
+  }
+  onSubmit(form):void{
+    if (this.startDate && this.endDate) {
+      this.reservationFormModel.startDate = this.startDate;
+      this.reservationFormModel.endDate = this.endDate;
+    }
+    console.log(this.reservationFormModel);
     
   }
 }

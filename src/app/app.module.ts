@@ -12,7 +12,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatFormFieldModule, MAT_FORM_FIELD } from '@angular/material/form-field';
-
+import { FormsModule } from '@angular/forms';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {SelectDateService} from "./services/selectDate.service";
@@ -37,6 +37,7 @@ registerLocaleData(localEs, "es")
     MatIconModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
+    FormsModule
   ],
   providers: [
     MatDatepickerModule,

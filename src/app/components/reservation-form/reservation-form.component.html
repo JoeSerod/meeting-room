@@ -1,4 +1,4 @@
-<form>
+<form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
     <h1>Reservar horario</h1>
     <ngx-timepicker-field [defaultTime]="'11:11 am'" 
         [controlOnly]="true"
@@ -8,4 +8,11 @@
         [controlOnly]="true"
         (timeChanged)="onChangeStartTime($event, 'end')"
     ></ngx-timepicker-field>
+    <input placeholder="Nombre"
+    required
+    name="name"
+    #name="ngModel"
+    [(ngModel)]="reservationFormModel.name"
+    >
+    <button type="submit" >Reservar</button>
 </form>
