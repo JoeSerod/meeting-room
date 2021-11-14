@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import {registerLocaleData} from "@angular/common";
+import localEs from "@angular/common/locales/es";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +15,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {SelectDateService} from "./services/selectDate.service"
 
-
+registerLocaleData(localEs, "es")
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import {SelectDateService} from "./services/selectDate.service"
   providers: [
     MatDatepickerModule,
     MatNativeDateModule,
-    SelectDateService
+    SelectDateService,
+    {provide: LOCALE_ID, useValue:"es"}
   ],
   bootstrap: [AppComponent]
 })

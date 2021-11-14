@@ -17,7 +17,7 @@ export class CalendarComponent implements OnInit {
     this.date.currentDate.subscribe(event=>console.log(event));
     
   }
-  onSelect(event){
+  onSelect(event:Date){
     this.selected = event;
     this.date.updateDate(this.selected);
     
