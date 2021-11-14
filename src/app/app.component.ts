@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     console.log("dialog");
     const dialogRef =  this.dialog.open(ReservationFormComponent,{
       width:"250px",
-      data: {date: this.date, name: this.name}
+      data: {date: this.date, name: this.name},
+      panelClass:"dialog"
     })
   }
 }
