@@ -1,25 +1,19 @@
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
     background-color: rgb(14, 154, 189);
 }
-
+.mat-icon{
+    width: 2rem;
+    height: 1.5rem;
+}
+.material-icons{
+    font-size: 1.5rem;
+}
 
 
 body{
     display: flex;
 }
-.app-body{
-    margin-top: 76px;
-    width: 100%;
-    display: flex;
-    div{
-        
-        height: 100%;
-        margin-right: auto;
-        
-        width: 50%;
-       
-    }
-}
+
 
 
 .appHeader{
@@ -39,3 +33,40 @@ body{
     }
 }
 
+.app-body{
+    margin-top: 76px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    div{
+        
+        height: 100%;
+        margin-right: auto;
+        
+        width: 50%;
+       
+    }
+    .newReservationButton{
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(40, 149, 192);
+        color: white;
+        border:0px;
+        padding: 1rem;
+        font-size: 1rem;
+        box-shadow: 1px 1px 10px 1px rgb(172, 172, 172) ;
+        font-weight: 600;
+        transition: 0.5s;
+    }
+    .newReservationButton:hover{
+        cursor: pointer;
+        background-color: rgb(64, 165, 206);
+        box-shadow: 1px 1px 13px 5px grey ;
+        transition: 0.5s;
+    }
+}

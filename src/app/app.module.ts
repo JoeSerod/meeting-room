@@ -9,6 +9,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 import {MatNativeDateModule} from "@angular/material/core";
 
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -30,7 +31,8 @@ registerLocaleData(localEs, "es")
     BrowserAnimationsModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [
     MatDatepickerModule,
