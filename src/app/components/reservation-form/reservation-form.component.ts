@@ -34,7 +34,7 @@ export class ReservationFormComponent implements OnInit {
       data:{date: this.date, name:this.name}
     });
     dialogRef.afterClosed().subscribe(result=>{
-      console.log("closed");
+  
       
     })
     
@@ -63,7 +63,7 @@ export class ReservationFormComponent implements OnInit {
       this.reservationFormModel.endDate = this.endDate;
       const dif =this.endDate.getTime()- this.startDate.getTime();
       const minDiff =dif/1000/60;
-      console.log(minDiff);
+  
       if (minDiff <0) {
         this.errorMessage = "Los horarios no son válidos"
       } 
@@ -71,7 +71,7 @@ export class ReservationFormComponent implements OnInit {
         this.errorMessage ="Solo puedes reservar la sala máximo 2 horas"
       }else{
         this.errorMessage = undefined;
-        console.log(this.reservationFormModel);
+ 
       }
     } else{
       this.errorMessage="Selecciona los horarios"
