@@ -10,6 +10,7 @@ import { ReservationFormComponent } from './components/reservation-form/reservat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatFormFieldModule, MAT_FORM_FIELD } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -35,10 +36,11 @@ registerLocaleData(localEs, "es")
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     MatDatepickerModule,

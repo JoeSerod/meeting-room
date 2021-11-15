@@ -27,5 +27,11 @@
         >
     </div>
     <span *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</span>
-    <button [disabled]="reservationForm.form.invalid" type="submit" >Reservar</button>
+    <button
+    class="disabled"
+    [ngClass]="{'enabled':!reservationForm.form.invalid}"
+    [disabled]="reservationForm.form.invalid" type="submit" >
+        <mat-spinner [diameter]="30" [strokeWidth]="10"></mat-spinner>
+        Reservar
+    </button>
 </form>
