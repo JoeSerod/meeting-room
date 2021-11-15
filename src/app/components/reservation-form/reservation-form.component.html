@@ -26,5 +26,6 @@
         [(ngModel)]="reservationFormModel.name"
         >
     </div>
+    <span *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</span>
     <button [disabled]="reservationForm.form.invalid" type="submit" >Reservar</button>
 </form>
