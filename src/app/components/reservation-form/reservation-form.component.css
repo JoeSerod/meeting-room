@@ -38,7 +38,24 @@ form .input .nameInput:focus {
   outline: none;
   border-bottom: 2px solid black;
 }
-form button[type=submit] {
+form .disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #797979;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  border: 0;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+}
+form .enabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   background-color: #00c3ff;
   border-radius: 10px;
@@ -49,6 +66,6 @@ form button[type=submit] {
   font-size: 20px;
   width: 100%;
 }
-form button[type=submit]:hover {
+form .enabled:hover {
   cursor: pointer;
 }
