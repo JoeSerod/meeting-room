@@ -68,11 +68,14 @@ class ReservationClass{
     }
     /**
      * 
-     * @param {Date} date 
+     * @param {String} date 
      */
     async getSchedule(date){
         try {
-            console.log(date);
+            const toDate = new Date(date)
+            const start = toDate;
+            const end= new Date(toDate.getFullYear(), toDate.getMonth(), toDate.getDate(), 23, 59, 59);
+            console.log(start, end);
         } catch (error) {
             return {message: error}
         }

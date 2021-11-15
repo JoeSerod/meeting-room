@@ -24,8 +24,8 @@ export class ScheduleComponent implements OnInit {
      
       let format = this.datePipe.transform(event,"EEEE dd  MMMM yyyy")
       this.currentDate= format;
-      console.log(event);
-      
+   
+      event.setHours(0,0,0);
       this._reservationService.getScheduleByDate(event).subscribe((e)=>{
         console.log(e);
         
