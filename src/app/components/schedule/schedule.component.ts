@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SelectDateService} from "../../services/selectDate.service";
 import {DatePipe} from "@angular/common";
 import { ReservationService} from "../../services/reservation.service";
+import {Reservation} from "../../models/reservation.model";
 
 @Component({
   selector: 'schedule',
@@ -12,11 +13,13 @@ import { ReservationService} from "../../services/reservation.service";
 })
 export class ScheduleComponent implements OnInit {
   public currentDate: String;
+  public scheduleList: Array<Reservation>;
   constructor(
     private selectedDate: SelectDateService,
     private datePipe: DatePipe,
     private _reservationService : ReservationService,
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
     this.selectedDate.currentDate.subscribe(event=>{
@@ -27,7 +30,19 @@ export class ScheduleComponent implements OnInit {
    
       event.setHours(0,0,0);
       this._reservationService.getScheduleByDate(event).subscribe((e)=>{
-        console.log(e);
+        if (typeof e === "object") {
+          if (e!==null) {
+            
+            this.scheduleList = e.map(element => {
+             let model = new Reservation(element.name, element.startDate, element.endDate, element.room);
+              return model;
+            });
+            console.log(this.scheduleList);
+            
+            
+          }
+          
+        }
         
       });
     });
