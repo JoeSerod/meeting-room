@@ -27,7 +27,7 @@ export class ReservationFormComponent implements OnInit {
     private selectDateService :SelectDateService,
     private _reservationService: ReservationService,
   ) {
-    this.reservationFormModel = new Reservation("",new Date(), new Date());
+    this.reservationFormModel = new Reservation("",new Date(), new Date(), "");
     this.submitting = false;
     this.options = [
       {value:"1", viewValue:"Sala 1"},

@@ -3,7 +3,14 @@
     <div class="input">
        <mat-form-field>
         <mat-label>Seleccionar Sala</mat-label>
-        <mat-select [(value)]="selectedRoom" (selectionChange)="onSelectRoom($event)">
+        <mat-select
+         [(value)]="selectedRoom" 
+         (selectionChange)="onSelectRoom($event)"
+          required
+          name="room"
+          #room="ngModel"
+          [(ngModel)]= "reservationFormModel.room"
+          >
             <mat-option *ngFor="let option of options" value={{option.value}}>{{option.viewValue}}</mat-option>
             
         </mat-select>
