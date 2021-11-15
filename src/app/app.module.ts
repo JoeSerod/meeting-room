@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import localEs from "@angular/common/locales/es";
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
@@ -37,7 +37,8 @@ registerLocaleData(localEs, "es")
     MatIconModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     MatDatepickerModule,
