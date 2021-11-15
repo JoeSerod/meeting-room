@@ -13,6 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatFormFieldModule, MAT_FORM_FIELD } from '@angular/material/form-field';
+import {MatSelectModule} from "@angular/material/select"
 import { FormsModule } from '@angular/forms';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -41,6 +42,7 @@ registerLocaleData(localEs, "es")
     NgxMaterialTimepickerModule,
     FormsModule,
     HttpClientModule,
+    MatSelectModule
   ],
   providers: [
     MatDatepickerModule,

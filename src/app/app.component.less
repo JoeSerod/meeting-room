@@ -8,7 +8,23 @@
 .material-icons{
     font-size: 1.5rem;
 }
-
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline{
+    background-color: black;
+}
+::ng-deep.mat-select-value, ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label ,
+::ng-deep.mat-select-arrow
+{
+    color: black;
+}
+::ng-deep.mat-form-field.mat-focused .mat-form-field-ripple {
+ background-color: #007daa;
+}
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled), 
+::ng-deep.mat-form-field.mat-focused .mat-form-field-label,
+::ng-deep.mat-form-field.mat-focused .mat-form-field-ripple,
+::ng-deep.mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+    color: #0ba8e0;
+}
 ::ng-deep.mat-progress-spinner circle, .mat-spinner circle{
     stroke: white
 }

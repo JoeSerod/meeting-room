@@ -20,14 +20,20 @@ export class ReservationFormComponent implements OnInit {
   endDate: Date;
   submitting: Boolean;
   reservationFormModel :Reservation;
-
+  options : Array<Object>;
+  selectedRoom: String;
   constructor(
     public dialogRef: MatDialogRef<AppComponent>,
     private selectDateService :SelectDateService,
     private _reservationService: ReservationService,
   ) {
-    this.reservationFormModel = new Reservation("",new Date(), new Date());
+    this.reservationFormModel = new Reservation("",new Date(), new Date(), "");
     this.submitting = false;
+    this.options = [
+      {value:"1", viewValue:"Sala 1"},
+      {value:"2", viewValue:"Sala 2"},
+      {value:"3", viewValue:"Sala 3"},
+    ]
    }
 
   ngOnInit(): void {
@@ -55,6 +61,12 @@ export class ReservationFormComponent implements OnInit {
    
     
   }
+  onSelectRoom(e){
+    console.log(e.value);
+    
+    this.selectedRoom = "1";
+    
+  }
   onSubmit(form):void{
     this.submitting = true;
     if (this.startDate && this.endDate) {
@@ -71,14 +83,37 @@ export class ReservationFormComponent implements OnInit {
         this.errorMessage ="Solo puedes reservar la sala máximo 2 horas";
         this.submitting = false;
       }else{
-        this.dialogRef.close()
+    
         this._reservationService.addSchedule(this.reservationFormModel).subscribe(
           response =>{
-            console.log(response);
+            if (response.message) {
+              console.log(response.message);
+              
+              switch (response.message) {
+                case "success":
+                  this.dialogRef.close()
+                  break;
+               case " The room is not available":
+             
+                 
+                this.errorMessage= "La sala no esta disponible en el horario que seleccionaste";  
+                this.submitting = false;
+               break;
+                default:
+                 
+                  
+                  break;
+              }
+            }else{
+              this.errorMessage= "No se ha apartado la sala. Inténtalo más tarde.";  
+              this.submitting = false;
+            }
+         
             
           },
           error=>{
-            console.log(error);
+            this.errorMessage= "No se ha apartado la sala. Inténtalo más tarde.";  
+            this.submitting = false;
             
           }
         );

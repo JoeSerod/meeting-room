@@ -6,23 +6,65 @@ class ReservationClass{
     }
     /**
      * 
+     * @param {Date} startDate 
+     * @param {Date} endDate 
+     * @return {Boolean} false if the room availabilty is false and true if it's available
+     */
+    async verifyAvailability (startDate, endDate, room) {
+        console.log(startDate, endDate);
+        return ReservationModel.find({
+         $and:[
+             { $or:[
+                {$and:[
+                    {"startDate":{$lt: startDate}},
+                    {"endDate":{$gte: startDate}}
+                ]},{ $and:[
+                    {"startDate":{$lt: endDate}},
+                    {"endDate":{ $gte: endDate}},
+                ]}
+              ]},
+              {
+                  "room": {$eq: room}
+              }
+            
+         ]
+        }).then((value)=>{
+            console.log(value);
+            if(value.length>0){
+                return false;
+            }
+            return true;
+            
+        }).catch((error)=>{
+            console.log(error);
+            return false;
+        })
+    }
+    /**
+     * 
      * @param {Object} model 
      */
-    saveSchedule(params){
+   async saveSchedule(params){
         const model = new ReservationModel();
         model.name = params.name;
         model.startDate = params.startDate;
         model.endDate = params.endDate;
         model.room = params.room;
-        const response = model.save().then((docStored)=>{
+        const available = await this.verifyAvailability(model.startDate, model.endDate, model.room);
+        if(available){
+            const response = model.save().then((docStored)=>{
             if(!docStored) return{status: 404, body:{message:"the room has not been reserved"}}
             return {status:200, body:{doc: docStored, message:"success"}};
-        }).catch((err)=>{
-         
-            return {status: 500,body:{message:err}};
-        })
+            }).catch((err)=>{
+            
+                return {status: 500,body:{message:err}};
+            })
+            
+            return response;
+        } 
+        return {status:200, body:{message:" The room is not available"}};
         
-        return response;
+     
     }
     
 }
