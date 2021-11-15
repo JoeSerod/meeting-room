@@ -14,7 +14,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.date.currentDate.subscribe(event=>console.log(event));
+   
     
   }
   onSelect(event:Date){

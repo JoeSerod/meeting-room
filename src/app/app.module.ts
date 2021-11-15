@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatNativeDateModule} from "@angular/material/core";
-
+import { MatFormFieldModule, MAT_FORM_FIELD } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {SelectDateService} from "./services/selectDate.service"
+import {SelectDateService} from "./services/selectDate.service";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 registerLocaleData(localEs, "es")
 @NgModule({
@@ -32,13 +34,17 @@ registerLocaleData(localEs, "es")
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    NgxMaterialTimepickerModule,
+    FormsModule
   ],
   providers: [
     MatDatepickerModule,
     MatNativeDateModule,
     SelectDateService,
-    {provide: LOCALE_ID, useValue:"es"}
+    {provide: LOCALE_ID, useValue:"es"},
+    {provide:MAT_FORM_FIELD, useValue:{appearance:"fill"}}
   ],
   bootstrap: [AppComponent]
 })
