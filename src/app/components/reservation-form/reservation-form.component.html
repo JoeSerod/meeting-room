@@ -1,6 +1,15 @@
 <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
     <h1>Reservar horario</h1>
     <div class="input">
+       <mat-form-field>
+        <mat-label>Seleccionar Sala</mat-label>
+        <mat-select [(value)]="selectedRoom" (selectionChange)="onSelectRoom($event)">
+            <mat-option *ngFor="let option of options" value={{option.value}}>{{option.viewValue}}</mat-option>
+            
+        </mat-select>
+       </mat-form-field>
+    </div>
+    <div class="input">
         <label for="startTime">Hora de Inicio</label>
         <ngx-timepicker-field
             [controlOnly]="true"

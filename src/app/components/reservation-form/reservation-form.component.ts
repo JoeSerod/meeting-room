@@ -20,7 +20,8 @@ export class ReservationFormComponent implements OnInit {
   endDate: Date;
   submitting: Boolean;
   reservationFormModel :Reservation;
-
+  options : Array<Object>;
+  selectedRoom: String;
   constructor(
     public dialogRef: MatDialogRef<AppComponent>,
     private selectDateService :SelectDateService,
@@ -28,6 +29,11 @@ export class ReservationFormComponent implements OnInit {
   ) {
     this.reservationFormModel = new Reservation("",new Date(), new Date());
     this.submitting = false;
+    this.options = [
+      {value:"1", viewValue:"Sala 1"},
+      {value:"2", viewValue:"Sala 2"},
+      {value:"3", viewValue:"Sala 3"},
+    ]
    }
 
   ngOnInit(): void {
@@ -53,6 +59,12 @@ export class ReservationFormComponent implements OnInit {
     
    
    
+    
+  }
+  onSelectRoom(e){
+    console.log(e.value);
+    
+    this.selectedRoom = "1";
     
   }
   onSubmit(form):void{
