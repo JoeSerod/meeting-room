@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AppComponent } from 'src/app/app.component';
 import { SelectDateService } from 'src/app/services/selectDate.service';
 import {Reservation} from "../../models/reservation.model";
 import {ReservationService} from "../../services/reservation.service";
@@ -21,7 +22,7 @@ export class ReservationFormComponent implements OnInit {
   reservationFormModel :Reservation;
 
   constructor(
-    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<AppComponent>,
     private selectDateService :SelectDateService,
     private _reservationService: ReservationService,
   ) {
@@ -35,17 +36,7 @@ export class ReservationFormComponent implements OnInit {
       
     })
   }
-  openFormDialog():void{
-    const dialogRef = this.dialog.open(ReservationFormComponent,{
-      width:"250px",
-      data:{date: this.date, name:this.name}
-    });
-    dialogRef.afterClosed().subscribe(result=>{
-  
-      
-    })
-    
-  }
+
   onChangeStartTime(e, type){
     let timeExp = e.match(/(\d+)\:(\d+) (\w+)/),
     hours = timeExp[3]==="AM"? timeExp[1]==="12"? 0 :timeExp[1]: timeExp[1]==="12"?12 :+timeExp[1]+12,
@@ -80,16 +71,17 @@ export class ReservationFormComponent implements OnInit {
         this.errorMessage ="Solo puedes reservar la sala máximo 2 horas";
         this.submitting = false;
       }else{
-        // this._reservationService.addSchedule(this.reservationFormModel).subscribe(
-        //   response =>{
-        //     console.log(response);
+        this.dialogRef.close()
+        this._reservationService.addSchedule(this.reservationFormModel).subscribe(
+          response =>{
+            console.log(response);
             
-        //   },
-        //   error=>{
-        //     console.log(error);
+          },
+          error=>{
+            console.log(error);
             
-        //   }
-        // );
+          }
+        );
         this.errorMessage = undefined;
  
       }
