@@ -3,14 +3,13 @@ const Reservation = require("../utils/ReservationClass");
 
 
 const controller = {
-    getSchedule: function (req, res) {
+    getSchedule:async function (req, res) {
         try {
             const reservation = new Reservation();
             const date = req.body.date;
-            reservation.getSchedule(date)
-            return res.status(200).send({
-                message: "get schedule route OK"
-            })
+            const response = await reservation.getSchedule(date);
+            console.log(response);
+            return res.status(response.status).send(response.data);
         } catch (error) {
             return res.status(500).send({message:"error"})
         }

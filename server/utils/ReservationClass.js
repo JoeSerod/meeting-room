@@ -75,7 +75,20 @@ class ReservationClass{
             const toDate = new Date(date)
             const start = toDate;
             const end= new Date(toDate.getFullYear(), toDate.getMonth(), toDate.getDate(), 23, 59, 59);
-            console.log(start, end);
+            return ReservationModel.find({
+                $and:[
+                    {"startDate":{$gte: start}},
+                    {"endDate":{$lte: end}},
+                ]
+            }).sort("startDate").then((value)=>{
+                if (value.length>0) {
+                    return {status: 200, data: value};
+                } else{
+                    return {status: 200, data:undefined};
+                }
+            }).catch((error)=>{
+                return {status: 500, data: error};
+            })
         } catch (error) {
             return {message: error}
         }
