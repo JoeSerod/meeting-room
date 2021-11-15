@@ -9,11 +9,19 @@
 }
 .scheduleSection .scheduleList {
   padding: 0 2rem;
+  display: flex;
 }
 .scheduleSection .scheduleList ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
   list-style: none;
+  padding: 0 2px;
 }
 .scheduleSection .scheduleList ul li {
+  margin: auto;
+  width: -webkit-fill-available;
   background-color: #dddddd;
   border-radius: 20px;
   padding: 2rem;
