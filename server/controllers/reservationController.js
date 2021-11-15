@@ -5,11 +5,14 @@ const Reservation = require("../utils/ReservationClass");
 const controller = {
     getSchedule: function (req, res) {
         try {
+            const reservation = new Reservation();
+            const date = req.body.date;
+            reservation.getSchedule(date)
             return res.status(200).send({
                 message: "get schedule route OK"
             })
         } catch (error) {
-            
+            return res.status(500).send({message:"error"})
         }
     },
 
@@ -30,7 +33,7 @@ const controller = {
            return res.status(response.status).send(response.body)
 
        } catch (error) {
-           
+        return res.status(500).send({message:"error"})
        }
     }
 }

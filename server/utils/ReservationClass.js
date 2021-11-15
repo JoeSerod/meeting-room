@@ -66,6 +66,17 @@ class ReservationClass{
         
      
     }
+    /**
+     * 
+     * @param {Date} date 
+     */
+    async getSchedule(date){
+        try {
+            console.log(date);
+        } catch (error) {
+            return {message: error}
+        }
+    }
     
 }
 
