@@ -11,7 +11,7 @@ class ReservationClass{
      * @return {Boolean} false if the room availabilty is false and true if it's available
      */
     async verifyAvailability (startDate, endDate, room) {
-        console.log(startDate, endDate);
+        
         return ReservationModel.find({
          $and:[
              { $or:[
@@ -29,7 +29,7 @@ class ReservationClass{
             
          ]
         }).then((value)=>{
-            console.log(value);
+      
             if(value.length>0){
                 return false;
             }
