@@ -13,10 +13,12 @@ export class ReservationService{
         this.url = Global.url;
     }
 
-    addSchedule(form:Reservation){
+    addSchedule(form:Reservation):Observable<any>{
+        console.log(form);
+        
         let params = JSON.stringify(form);
-        let header = new HttpHeaders().set("Content-Type", "application/json");
-        return this._http.post(this.url);
+        let headers = new HttpHeaders().set("Content-Type", "application/json");
+        return this._http.post(`${this.url}/save-schedule`, params, {headers: headers});
     }
 
 }

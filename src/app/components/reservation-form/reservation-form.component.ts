@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectDateService } from 'src/app/services/selectDate.service';
 import {Reservation} from "../../models/reservation.model";
+import {ReservationService} from "../../services/reservation.service";
+
+
 @Component({
   selector: 'reservation-form',
   templateUrl: './reservation-form.component.html',
-  styleUrls: ['./reservation-form.component.less']
+  styleUrls: ['./reservation-form.component.less'],
+  providers: [ReservationService]
 })
 export class ReservationFormComponent implements OnInit {
   date: Date;
@@ -17,7 +21,8 @@ export class ReservationFormComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private selectDateService :SelectDateService
+    private selectDateService :SelectDateService,
+    private _reservationService: ReservationService,
   ) {
     this.reservationFormModel = new Reservation("",new Date(), new Date());
    }
@@ -70,6 +75,16 @@ export class ReservationFormComponent implements OnInit {
       else if(minDiff>120){
         this.errorMessage ="Solo puedes reservar la sala máximo 2 horas"
       }else{
+        this._reservationService.addSchedule(this.reservationFormModel).subscribe(
+          response =>{
+            console.log(response);
+            
+          },
+          error=>{
+            console.log(error);
+            
+          }
+        );
         this.errorMessage = undefined;
  
       }

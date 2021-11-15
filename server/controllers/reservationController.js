@@ -12,13 +12,18 @@ const controller = {
             
         }
     },
+
+    async verifyAvailability (req, res) {
+        
+    },
+
     /**
-     * 
+     * Save the schedule for a room in reservation collection
      * @param {Request} req 
      * @param {Response} res 
      * @returns 
      */
-     saveSchedule:async function (req, res) {
+    async saveSchedule  (req, res) {
        try {
            const reservation = new Reservation();
            const params = req.body;
