@@ -61,20 +61,24 @@ export class ReservationFormComponent implements OnInit {
     if (this.startDate && this.endDate) {
       this.reservationFormModel.startDate = this.startDate;
       this.reservationFormModel.endDate = this.endDate;
+      const dif =this.endDate.getTime()- this.startDate.getTime();
+      const minDiff =dif/1000/60;
+      console.log(minDiff);
+      if (minDiff <0) {
+        this.errorMessage = "Los horarios no son válidos"
+      } 
+      else if(minDiff>120){
+        this.errorMessage ="Solo puedes reservar la sala máximo 2 horas"
+      }else{
+        this.errorMessage = undefined;
+        console.log(this.reservationFormModel);
+      }
+    } else{
+      this.errorMessage="Selecciona los horarios"
     }
-    const dif =this.endDate.getTime()- this.startDate.getTime();
-    const minDiff =dif/1000/60;
-    console.log(minDiff);
+   
     
-    if (minDiff <0) {
-      this.errorMessage = "Los horarios no son válidos"
-    } 
-    else if(minDiff>120){
-      this.errorMessage ="Solo puedes reservar la sala máximo 2 horas"
-    }else{
-      this.errorMessage = undefined;
-      console.log(this.reservationFormModel);
-    }
+   
     
    
     
