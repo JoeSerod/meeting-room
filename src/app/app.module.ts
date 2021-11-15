@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import localEs from "@angular/common/locales/es";
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
@@ -10,6 +10,7 @@ import { ReservationFormComponent } from './components/reservation-form/reservat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatNativeDateModule} from "@angular/material/core";
 import { MatFormFieldModule, MAT_FORM_FIELD } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -35,9 +36,11 @@ registerLocaleData(localEs, "es")
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     NgxMaterialTimepickerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     MatDatepickerModule,
