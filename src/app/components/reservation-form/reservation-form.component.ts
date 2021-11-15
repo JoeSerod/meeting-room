@@ -83,14 +83,37 @@ export class ReservationFormComponent implements OnInit {
         this.errorMessage ="Solo puedes reservar la sala máximo 2 horas";
         this.submitting = false;
       }else{
-        this.dialogRef.close()
+    
         this._reservationService.addSchedule(this.reservationFormModel).subscribe(
           response =>{
-            console.log(response);
+            if (response.message) {
+              console.log(response.message);
+              
+              switch (response.message) {
+                case "success":
+                  this.dialogRef.close()
+                  break;
+               case " The room is not available":
+             
+                 
+                this.errorMessage= "La sala no esta disponible en el horario que seleccionaste";  
+                this.submitting = false;
+               break;
+                default:
+                 
+                  
+                  break;
+              }
+            }else{
+              this.errorMessage= "No se ha apartado la sala. Inténtalo más tarde.";  
+              this.submitting = false;
+            }
+         
             
           },
           error=>{
-            console.log(error);
+            this.errorMessage= "No se ha apartado la sala. Inténtalo más tarde.";  
+            this.submitting = false;
             
           }
         );
