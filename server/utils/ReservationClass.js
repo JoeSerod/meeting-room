@@ -6,6 +6,27 @@ class ReservationClass{
     }
     /**
      * 
+     * @param {Date} startDate 
+     * @param {Date} endDate 
+     */
+    async verifyAvailability (startDate, endDate) {
+        console.log(startDate, endDate);
+        ReservationModel.find({
+          $or:[
+            {$and:[
+                {"startDate":{$lt: startDate}},
+                {"endDate":{$gte: startDate}}
+            ]},{ $and:[
+                {"startDate":{$lt: endDate}},
+                {"endDate":{ $gte: endDate}},
+            ]}
+          ]
+        }).then((value)=>{
+            console.log(value);
+        })
+    }
+    /**
+     * 
      * @param {Object} model 
      */
     saveSchedule(params){
@@ -14,15 +35,17 @@ class ReservationClass{
         model.startDate = params.startDate;
         model.endDate = params.endDate;
         model.room = params.room;
-        const response = model.save().then((docStored)=>{
-            if(!docStored) return{status: 404, body:{message:"the room has not been reserved"}}
-            return {status:200, body:{doc: docStored, message:"success"}};
-        }).catch((err)=>{
+        this.verifyAvailability(model.startDate, model.endDate);
+        // const response = model.save().then((docStored)=>{
+        //     if(!docStored) return{status: 404, body:{message:"the room has not been reserved"}}
+        //     return {status:200, body:{doc: docStored, message:"success"}};
+        // }).catch((err)=>{
          
-            return {status: 500,body:{message:err}};
-        })
+        //     return {status: 500,body:{message:err}};
+        // })
         
-        return response;
+        // return response;
+        return {"merr": "OK"}
     }
     
 }
