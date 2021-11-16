@@ -14,7 +14,7 @@
         </ul>
         <ul>
             <h1>Sala 2</h1>
-            <li *ngFor="let item of scheduleList['2']">
+            <li *ngFor="let item of scheduleList['2']" (click)="openEditDialog(item)">
                 <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
@@ -22,7 +22,7 @@
         </ul>
         <ul >
             <h1>Sala 3</h1>
-            <li *ngFor="let item of scheduleList['3']">
+            <li *ngFor="let item of scheduleList['3']" (click)="openEditDialog(item)">
                 <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
