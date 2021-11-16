@@ -17,12 +17,15 @@ export class EditReservationFormComponent implements OnInit {
   submitting: Boolean;
   startTime: String;
   endTime: String;
+  deleting: Boolean;
   constructor(
     private selectDateService :SelectDateService,
     public dialogRef: MatDialogRef<ReservationFormComponent>,
     @Inject(MAT_DIALOG_DATA) public reservationData:any,
   ) {
     this.reservationFormModel = new Reservation("",new Date(), new Date(), "");
+    this.submitting = false;
+    this.deleting = false;
    }
 
   ngOnInit(): void {
@@ -53,6 +56,11 @@ export class EditReservationFormComponent implements OnInit {
     
    
  
+    
+  }
+  onDelete(){
+    this.deleting = true;
+    console.log("deleting");
     
   }
   onChangeStartTime(event, type:String){
