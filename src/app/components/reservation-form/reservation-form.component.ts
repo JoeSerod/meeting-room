@@ -99,6 +99,10 @@ export class ReservationFormComponent implements OnInit {
                 this.errorMessage= "La sala no esta disponible en el horario que seleccionaste";  
                 this.submitting = false;
                break;
+               case "The date has been expired":
+                this.errorMessage= "El horario no esta disponible";  
+                this.submitting = false;
+                 break;
                 default:
                  
                   

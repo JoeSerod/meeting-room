@@ -9,13 +9,30 @@
 }
 .scheduleSection .scheduleList {
   padding: 0 2rem;
+  display: flex;
 }
 .scheduleSection .scheduleList ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
   list-style: none;
+  padding: 0 2px;
 }
 .scheduleSection .scheduleList ul li {
+  display: flex;
+  margin: auto;
+  width: -webkit-fill-available;
   background-color: #dddddd;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1rem 1.5rem;
   margin-top: 1rem;
+}
+.scheduleSection .scheduleList ul li .right {
+  width: 70%;
+  word-break: break-all;
+}
+.scheduleSection .scheduleList ul li span {
+  width: 30%;
+  margin-left: auto;
 }

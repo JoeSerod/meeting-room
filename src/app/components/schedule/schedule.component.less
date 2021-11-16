@@ -8,14 +8,33 @@
     }
     .scheduleList{
         padding: 0 2rem;
-       
+       display: flex;
         ul{
+            
+            display: flex;
+            flex-direction: column;
+            align-items:  center;
+            width: 90%;
             list-style: none;
+            
+            padding: 0 2px;
             li{
+                display: flex;
+               
+                margin: auto;
+                width: -webkit-fill-available;
                 background-color: rgb(221, 221, 221);
                 border-radius: 20px;
-                padding: 2rem;
+                padding: 1rem 1.5rem;
                 margin-top: 1rem;
+                .right{
+                    width: 70%;
+                    word-break: break-all;
+                }
+                span{
+                    width: 30%;
+                    margin-left: auto;
+                }
             }
         }
     }
