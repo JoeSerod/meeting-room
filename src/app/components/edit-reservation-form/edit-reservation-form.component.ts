@@ -65,11 +65,13 @@ export class EditReservationFormComponent implements OnInit {
     this.deleting = true;
     this._reservationService.deleteReservation(this.reservationData.id).subscribe(
       response=>{
+        this.deleting = false;
         console.log(response);
         
       },
       error=>{
-        console.log(error);
+        this.errorMessage="No se ha eliminado la reservación";
+        this.deleting = false;
         
       }
     );
