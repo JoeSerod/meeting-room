@@ -1,0 +1,71 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form h1 {
+  font-weight: 900;
+}
+form .hide {
+  display: none;
+}
+form .errorMessage {
+  display: flex;
+  color: white;
+  background-color: red;
+  font-weight: 600;
+  padding: 2px 10px;
+  margin-top: 18px;
+  transition: 0.6s;
+}
+form label {
+  color: #000000;
+  margin: 15px 0;
+  font-weight: 900;
+}
+form .input {
+  display: flex;
+  flex-direction: column;
+}
+form .input .nameInput {
+  border: 0;
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  font-size: 15px;
+}
+form .input .nameInput:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+form .disabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #797979;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  border: 0;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+}
+form .enabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #00c3ff;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  border: 0;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+}
+form .enabled:hover {
+  cursor: pointer;
+}

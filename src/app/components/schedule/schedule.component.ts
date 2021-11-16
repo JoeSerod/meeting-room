@@ -4,6 +4,7 @@ import {DatePipe} from "@angular/common";
 import { ReservationService} from "../../services/reservation.service";
 import {Reservation} from "../../models/reservation.model";
 import { MatDialog } from '@angular/material/dialog';
+import { EditReservationFormComponent } from '../edit-reservation-form/edit-reservation-form.component';
 
 @Component({
   selector: 'schedule',
@@ -51,6 +52,7 @@ export class ScheduleComponent implements OnInit {
             
             e.forEach(element => {
               let model = {
+                _id: element._id,
                 name: element.name,
                 startTime: this.formatTime(element.startDate),
                 endTime: this.formatTime(element.endDate),
@@ -69,10 +71,16 @@ export class ScheduleComponent implements OnInit {
     });
     
   }
-  openEditDialog():void{
-    const dialogRef =  this.matDialog.open(ScheduleComponent,{
+  openEditDialog(data):void{
+    const dialogRef =  this.matDialog.open(EditReservationFormComponent,{
       width:"50vh",
       height: "50vh",
+      data: {
+        startTime: data.startTime, 
+        endTime: data.endTime,
+         name: data.name, 
+         id: data._id
+        },
       panelClass:"dialog"
     })
     

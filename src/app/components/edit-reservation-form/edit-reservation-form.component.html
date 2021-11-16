@@ -1,0 +1,40 @@
+
+<form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
+    <h1>Reservar horario</h1>
+   
+    <div class="input">
+        <label for="startTime">Hora de Inicio</label>
+        <ngx-timepicker-field
+            [controlOnly]="true"
+            (timeChanged)="onChangeStartTime($event, 'start')"
+            name="startTime"
+        ></ngx-timepicker-field>
+    </div>
+    <div class="input">
+        <label for="endTime">Hora de Fin</label>
+        <ngx-timepicker-field
+            [controlOnly]="true"
+            name="endTime"
+            (timeChanged)="onChangeStartTime($event, 'end')"
+        ></ngx-timepicker-field>
+    </div>
+    <div class="input">
+        <label for="name">Nombre de quien reserva</label>
+        <input placeholder="Nombre"
+        class="nameInput"
+        required
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="reservationFormModel.name"
+        >
+    </div>
+    <span *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</span>
+    <button
+    class="disabled"
+    [ngClass]="{'enabled':!reservationForm.form.invalid && !submitting}"
+    [disabled]="reservationForm.form.invalid" type="submit" >
+        <mat-spinner *ngIf="submitting" [diameter]="30" [strokeWidth]="10"></mat-spinner>
+        <span *ngIf="submitting; else elseBlock">Verificando</span>
+        <ng-template #elseBlock>Reservar</ng-template>
+    </button>
+</form>
