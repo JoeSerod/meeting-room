@@ -63,7 +63,16 @@ export class EditReservationFormComponent implements OnInit {
   }
   onDelete(){
     this.deleting = true;
-    this._reservationService.deleteReservation(this.reservationData.id);
+    this._reservationService.deleteReservation(this.reservationData.id).subscribe(
+      response=>{
+        console.log(response);
+        
+      },
+      error=>{
+        console.log(error);
+        
+      }
+    );
     
   }
   onChangeStartTime(event, type:String){

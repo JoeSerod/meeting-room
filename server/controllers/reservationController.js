@@ -34,6 +34,16 @@ const controller = {
        } catch (error) {
         return res.status(500).send({message:"error"})
        }
+    },
+    deleteReservation: async function(req, res) {
+        try {
+            const reservation = new Reservation();
+            const id = req.body;
+            const response = await reservation.deleteReservation(id);
+            return res.status(response.status).send(response.data);
+        } catch (error) {
+            return res.status(500).send({message:"error"})
+        }
     }
 }
 
