@@ -15,6 +15,8 @@ export class EditReservationFormComponent implements OnInit {
   reservationFormModel :Reservation;
   errorMessage: String;
   submitting: Boolean;
+  startTime: String;
+  endTime: String;
   constructor(
     private selectDateService :SelectDateService,
     public dialogRef: MatDialogRef<ReservationFormComponent>,
@@ -24,14 +26,45 @@ export class EditReservationFormComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    this.startTime = this.reservationData.startTime;
+    this.endTime = this.reservationData.endTime;
     
   }
   onSubmit(form):void{
-
+    this.submitting = true;
+    if (this.startTime && this.endTime) {
+      const startDate = new Date(`${this.reservationData.date.split("T")[0]} ${this.startTime}`);
+       const endDate =  new Date(`${this.reservationData.date.split("T")[0]} ${this.endTime}`);
+       const dif =endDate.getTime()- startDate.getTime();
+       const minDiff =dif/1000/60;
+       if (minDiff<0) {
+        this.errorMessage = "Los horarios no son válidos";
+        this.submitting = false;
+       }  else if(minDiff>120){
+        this.errorMessage ="Solo puedes reservar la sala máximo 2 horas";
+        this.submitting = false;
+      } else{
+     
+        console.log("reserve");
+        
+      }
+    }
+    
+    
+   
+ 
+    
   }
   onChangeStartTime(event, type:String){
-
+    if (type === "start") {
+      this.startTime = event;
+    }
+    if (type === "end") {
+      this.endTime = event;
+    }
+   
+    
+    
   }
 
 }

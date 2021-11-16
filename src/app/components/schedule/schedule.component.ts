@@ -56,7 +56,8 @@ export class ScheduleComponent implements OnInit {
                 name: element.name,
                 startTime: this.formatTime(element.startDate),
                 endTime: this.formatTime(element.endDate),
-                room: element.room
+                room: element.room,
+                date: element.startDate
               }
               this.scheduleList[`${model.room}`].push(model);
             });
@@ -79,7 +80,8 @@ export class ScheduleComponent implements OnInit {
         startTime: data.startTime, 
         endTime: data.endTime,
          name: data.name, 
-         id: data._id
+         id: data._id,
+         date: data.date
         },
       panelClass:"dialog"
     })
