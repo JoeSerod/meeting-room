@@ -6,8 +6,8 @@
         <ul>
             <h1>Sala 1</h1>
             <li *ngFor="let item of scheduleList['1']">
-                <p class="right">{{item.name}}</p>
-                <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
+                <p class="name">{{item.name}}</p>
+                <span><p>{{item.startTime}}-{{item.endTime}}</p></span>
                 
             </li>
             
@@ -15,7 +15,7 @@
         <ul>
             <h1>Sala 2</h1>
             <li *ngFor="let item of scheduleList['2']">
-                <p class="right">{{item.name}}</p>
+                <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             
@@ -23,7 +23,7 @@
         <ul >
             <h1>Sala 3</h1>
             <li *ngFor="let item of scheduleList['3']">
-                <p class="right">{{item.name}}</p>
+                <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             
