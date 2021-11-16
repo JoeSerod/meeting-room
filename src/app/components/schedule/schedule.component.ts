@@ -19,11 +19,7 @@ export class ScheduleComponent implements OnInit {
     private datePipe: DatePipe,
     private _reservationService : ReservationService,
   ) {
-    this.scheduleList={
-      "1":[],
-      "2":[],
-      "3":[]
-    }
+    
    }
 
    formatTime(date: Date){
@@ -37,7 +33,11 @@ export class ScheduleComponent implements OnInit {
      
       let format = this.datePipe.transform(event,"EEEE dd  MMMM yyyy")
       this.currentDate= format;
-   
+      this.scheduleList={
+        "1":[],
+        "2":[],
+        "3":[]
+      }
       event.setHours(0,0,0);
       this._reservationService.getScheduleByDate(event).subscribe((e)=>{
         if (typeof e === "object") {
