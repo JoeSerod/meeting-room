@@ -69,3 +69,20 @@ form .enabled {
 form .enabled:hover {
   cursor: pointer;
 }
+form .delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #d60f0f;
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  border: 0;
+  font-weight: 600;
+  font-size: 20px;
+  width: 100%;
+}
+form .delete:hover {
+  cursor: pointer;
+}
