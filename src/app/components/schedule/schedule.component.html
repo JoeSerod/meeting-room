@@ -5,22 +5,26 @@
     <div class="scheduleList">
         <ul>
             <h1>Sala 1</h1>
-            <li>
-                1:00 - 2:00
+            <li *ngFor="let item of scheduleList['1']">
+                <p class="right">{{item.name}}</p>
+                <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
+                
             </li>
             
         </ul>
         <ul>
             <h1>Sala 2</h1>
-            <li>
-                1:00 - 2:00
+            <li *ngFor="let item of scheduleList['2']">
+                <p class="right">{{item.name}}</p>
+                <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             
         </ul>
-        <ul>
+        <ul >
             <h1>Sala 3</h1>
-            <li>
-                1:00 - 2:00
+            <li *ngFor="let item of scheduleList['3']">
+                <p class="right">{{item.name}}</p>
+                <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             
         </ul>

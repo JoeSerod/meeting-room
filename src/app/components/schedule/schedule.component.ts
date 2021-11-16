@@ -13,12 +13,22 @@ import {Reservation} from "../../models/reservation.model";
 })
 export class ScheduleComponent implements OnInit {
   public currentDate: String;
-  public scheduleList: Array<Reservation>;
+  public scheduleList:{"1": Array<Object>,"2": Array<Object>, "3": Array<Object>};
   constructor(
     private selectedDate: SelectDateService,
     private datePipe: DatePipe,
     private _reservationService : ReservationService,
   ) {
+    this.scheduleList={
+      "1":[],
+      "2":[],
+      "3":[]
+    }
+   }
+
+   formatTime(date: Date){
+      const format = this.datePipe.transform(date, "h:mm a");
+      return format;
    }
 
   ngOnInit(): void {
@@ -33,10 +43,16 @@ export class ScheduleComponent implements OnInit {
         if (typeof e === "object") {
           if (e!==null) {
             
-            this.scheduleList = e.map(element => {
-             let model = new Reservation(element.name, element.startDate, element.endDate, element.room);
-              return model;
+            e.forEach(element => {
+              let model = {
+                name: element.name,
+                startTime: this.formatTime(element.startDate),
+                endTime: this.formatTime(element.endDate),
+                room: element.room
+              }
+              this.scheduleList[`${model.room}`].push(model);
             });
+            
             console.log(this.scheduleList);
             
             
