@@ -130,7 +130,16 @@ class ReservationClass{
      */
     async deleteReservation(id){
         console.log(id);
-        return {status: 200, data:{message:"OK"}}
+       return ReservationModel.findByIdAndDelete(id).then(
+            (value)=>{
+         
+                return {status: 200, data:{message:"deleted", value: value}}
+            }
+        ).catch((error)=>{
+        
+            return {status: 400, data:{message: error}};
+        });
+       
     }
 
 }

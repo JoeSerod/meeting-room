@@ -38,7 +38,7 @@ const controller = {
     deleteReservation: async function(req, res) {
         try {
             const reservation = new Reservation();
-            const id = req.body;
+            const id = req.body.id;
             const response = await reservation.deleteReservation(id);
             return res.status(response.status).send(response.data);
         } catch (error) {
