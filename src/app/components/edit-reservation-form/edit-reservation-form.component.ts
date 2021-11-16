@@ -4,12 +4,14 @@ import {Reservation} from "../../models/reservation.model";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReservationFormComponent } from '../reservation-form/reservation-form.component';
 import { Inject } from '@angular/core';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 
 @Component({
   selector: 'app-edit-reservation-form',
   templateUrl: './edit-reservation-form.component.html',
-  styleUrls: ['./edit-reservation-form.component.less']
+  styleUrls: ['./edit-reservation-form.component.less'],
+  providers: [ReservationService]
 })
 export class EditReservationFormComponent implements OnInit {
   reservationFormModel :Reservation;
@@ -22,6 +24,7 @@ export class EditReservationFormComponent implements OnInit {
     private selectDateService :SelectDateService,
     public dialogRef: MatDialogRef<ReservationFormComponent>,
     @Inject(MAT_DIALOG_DATA) public reservationData:any,
+    private _reservationService: ReservationService, 
   ) {
     this.reservationFormModel = new Reservation("",new Date(), new Date(), "");
     this.submitting = false;
@@ -60,7 +63,7 @@ export class EditReservationFormComponent implements OnInit {
   }
   onDelete(){
     this.deleting = true;
-    console.log("deleting");
+    this._reservationService.deleteReservation(this.reservationData.id);
     
   }
   onChangeStartTime(event, type:String){

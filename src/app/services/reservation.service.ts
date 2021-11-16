@@ -26,6 +26,10 @@ export class ReservationService{
         let headers = new HttpHeaders().set("Content-Type", "application/json");
         return this._http.post(`${this.url}/get-schedule`, params, {headers: headers})
     }
+    deleteReservation(id: String){
+        console.log(id);
+        
+    }
 
 }
 
