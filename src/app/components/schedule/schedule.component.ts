@@ -26,7 +26,7 @@ export class ScheduleComponent implements OnInit {
    }
 
    formatTime(date: Date){
-      const format = this.datePipe.transform(date, "h:mm a");
+      const format = this.datePipe.transform(date, "h:mm aa","","en-US");
       return format;
    }
 

@@ -13,15 +13,25 @@ import { Inject } from '@angular/core';
 })
 export class EditReservationFormComponent implements OnInit {
   reservationFormModel :Reservation;
+  errorMessage: String;
+  submitting: Boolean;
   constructor(
     private selectDateService :SelectDateService,
     public dialogRef: MatDialogRef<ReservationFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    @Inject(MAT_DIALOG_DATA) public reservationData:any,
   ) {
     this.reservationFormModel = new Reservation("",new Date(), new Date(), "");
    }
 
   ngOnInit(): void {
+    
+    
+  }
+  onSubmit(form):void{
+
+  }
+  onChangeStartTime(event, type:String){
+
   }
 
 }
