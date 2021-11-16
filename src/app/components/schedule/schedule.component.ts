@@ -3,6 +3,7 @@ import {SelectDateService} from "../../services/selectDate.service";
 import {DatePipe} from "@angular/common";
 import { ReservationService} from "../../services/reservation.service";
 import {Reservation} from "../../models/reservation.model";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'schedule',
@@ -18,6 +19,7 @@ export class ScheduleComponent implements OnInit {
     private selectedDate: SelectDateService,
     private datePipe: DatePipe,
     private _reservationService : ReservationService,
+    public matDialog: MatDialog
   ) {
     
    }
@@ -67,6 +69,13 @@ export class ScheduleComponent implements OnInit {
     });
     
   }
-  
+  openEditDialog():void{
+    const dialogRef =  this.matDialog.open(ScheduleComponent,{
+      width:"50vh",
+      height: "50vh",
+      panelClass:"dialog"
+    })
+    
+  }
 
 }

@@ -5,7 +5,7 @@
     <div class="scheduleList">
         <ul>
             <h1>Sala 1</h1>
-            <li *ngFor="let item of scheduleList['1']">
+            <li *ngFor="let item of scheduleList['1']" (click)="openEditDialog()">
                 <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}-{{item.endTime}}</p></span>
                 
