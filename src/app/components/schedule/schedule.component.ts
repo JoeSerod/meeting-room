@@ -38,7 +38,16 @@ export class ScheduleComponent implements OnInit {
         "2":[],
         "3":[]
       }
-      event.setHours(0,0,0);
+      const today = new Date();
+      
+      
+      if (event.getDate() === today.getDate()) {
+       
+        
+        event = today;
+      }
+    
+      
       this._reservationService.getScheduleByDate(event).subscribe((e)=>{
         if (typeof e === "object") {
           if (e!==null) {
@@ -52,8 +61,7 @@ export class ScheduleComponent implements OnInit {
               }
               this.scheduleList[`${model.room}`].push(model);
             });
-            
-            console.log(this.scheduleList);
+           
             
             
           }
