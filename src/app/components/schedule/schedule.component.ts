@@ -41,13 +41,8 @@ export class ScheduleComponent implements OnInit {
       const today = new Date();
       
       
-      if (event.getDate() === today.getDate()) {
-       
-        
-        event = today;
-      }
     
-      
+      event.setHours(0,0, 0, 0);      
       this._reservationService.getScheduleByDate(event).subscribe((e)=>{
         if (typeof e === "object") {
           if (e!==null) {
