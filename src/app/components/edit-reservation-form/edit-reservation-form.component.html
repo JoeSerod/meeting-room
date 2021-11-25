@@ -1,0 +1,41 @@
+
+<form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
+    <h1>Actualizar reservación</h1>
+   
+    <div class="input">
+        <label for="startTime">Hora de Inicio</label>
+        <ngx-timepicker-field
+            [controlOnly]="true"
+            [defaultTime]="reservationData.startTime"
+            (timeChanged)="onChangeStartTime($event, 'start')"
+            name="startTime"
+        ></ngx-timepicker-field>
+    </div>
+    <div class="input">
+        <label for="endTime">Hora de Fin</label>
+        <ngx-timepicker-field
+            [controlOnly]="true"
+            name="endTime"
+            [defaultTime]="reservationData.endTime"
+            (timeChanged)="onChangeStartTime($event, 'end')"
+        ></ngx-timepicker-field>
+    </div>
+    
+    <span *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</span>
+    <button
+    class="disabled"
+    [ngClass]="{'enabled':!deleting}"
+    [disabled]="reservationForm.form.invalid || deleting" type="submit" >
+        <mat-spinner *ngIf="submitting" [diameter]="30" [strokeWidth]="10"></mat-spinner>
+        <span *ngIf="submitting; else elseBlock">Verificando</span>
+        <ng-template #elseBlock>Actualizar</ng-template>
+    </button>
+   <button class="delete" 
+   [ngClass]="{'disabled': deleting}"
+   [disabled]="deleting"
+   type="button" (click)="onDelete()">
+   <mat-spinner *ngIf="deleting" [diameter]="30" [strokeWidth]="10"></mat-spinner>
+    <span *ngIf="deleting; else elseMessage">Eliminando</span>
+    <ng-template #elseMessage>Eliminar</ng-template>
+   </button>
+</form>

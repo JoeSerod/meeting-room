@@ -20,21 +20,24 @@
             padding: 0 2px;
             li{
                 display: flex;
-               
+                flex-direction: column;
+                transition: 0.5s;
                 margin: auto;
                 width: -webkit-fill-available;
                 background-color: rgb(221, 221, 221);
                 border-radius: 20px;
                 padding: 1rem 1.5rem;
                 margin-top: 1rem;
-                .right{
-                    width: 70%;
-                    word-break: break-all;
+                .name{
+                    font-weight: 600;
                 }
-                span{
-                    width: 30%;
-                    margin-left: auto;
-                }
+               
+              
+            }
+            li:hover{
+                transition: 0.5s;
+                cursor: pointer;
+                box-shadow: 0px 0px 10px 1px grey;
             }
         }
     }

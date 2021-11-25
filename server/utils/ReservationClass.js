@@ -124,7 +124,24 @@ class ReservationClass{
             return {message: error}
         }
     }
-    
+    /**
+     * Delete a reservation by id
+     * @param {String} id 
+     */
+    async deleteReservation(id){
+        console.log(id);
+       return ReservationModel.findByIdAndDelete(id).then(
+            (value)=>{
+         
+                return {status: 200, data:{message:"deleted", value: value}}
+            }
+        ).catch((error)=>{
+        
+            return {status: 400, data:{message: error}};
+        });
+       
+    }
+
 }
 
 module.exports = ReservationClass;

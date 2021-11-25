@@ -3,6 +3,8 @@ import {SelectDateService} from "../../services/selectDate.service";
 import {DatePipe} from "@angular/common";
 import { ReservationService} from "../../services/reservation.service";
 import {Reservation} from "../../models/reservation.model";
+import { MatDialog } from '@angular/material/dialog';
+import { EditReservationFormComponent } from '../edit-reservation-form/edit-reservation-form.component';
 
 @Component({
   selector: 'schedule',
@@ -18,12 +20,13 @@ export class ScheduleComponent implements OnInit {
     private selectedDate: SelectDateService,
     private datePipe: DatePipe,
     private _reservationService : ReservationService,
+    public matDialog: MatDialog
   ) {
     
    }
 
    formatTime(date: Date){
-      const format = this.datePipe.transform(date, "h:mm a");
+      const format = this.datePipe.transform(date, "h:mm aa","","en-US");
       return format;
    }
 
@@ -49,10 +52,12 @@ export class ScheduleComponent implements OnInit {
             
             e.forEach(element => {
               let model = {
+                _id: element._id,
                 name: element.name,
                 startTime: this.formatTime(element.startDate),
                 endTime: this.formatTime(element.endDate),
-                room: element.room
+                room: element.room,
+                date: element.startDate
               }
               this.scheduleList[`${model.room}`].push(model);
             });
@@ -67,6 +72,20 @@ export class ScheduleComponent implements OnInit {
     });
     
   }
-  
+  openEditDialog(data):void{
+    const dialogRef =  this.matDialog.open(EditReservationFormComponent,{
+      width:"50vh",
+      height: "50vh",
+      data: {
+        startTime: data.startTime, 
+        endTime: data.endTime,
+         name: data.name, 
+         id: data._id,
+         date: data.date
+        },
+      panelClass:"dialog"
+    })
+    
+  }
 
 }

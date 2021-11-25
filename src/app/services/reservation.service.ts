@@ -26,6 +26,12 @@ export class ReservationService{
         let headers = new HttpHeaders().set("Content-Type", "application/json");
         return this._http.post(`${this.url}/get-schedule`, params, {headers: headers})
     }
+    deleteReservation(id: String):Observable<any>{
+        let params = JSON.stringify({id: id});
+        let headers = new HttpHeaders().set("Content-Type", "application/json");
+        return this._http.post(`${this.url}/delete-reservation`, params, {headers: headers})
+        
+    }
 
 }
 

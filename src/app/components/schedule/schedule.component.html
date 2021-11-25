@@ -5,25 +5,25 @@
     <div class="scheduleList">
         <ul>
             <h1>Sala 1</h1>
-            <li *ngFor="let item of scheduleList['1']">
-                <p class="right">{{item.name}}</p>
-                <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
+            <li *ngFor="let item of scheduleList['1']" (click)="openEditDialog(item)">
+                <p class="name">{{item.name}}</p>
+                <span><p>{{item.startTime}}-{{item.endTime}}</p></span>
                 
             </li>
             
         </ul>
         <ul>
             <h1>Sala 2</h1>
-            <li *ngFor="let item of scheduleList['2']">
-                <p class="right">{{item.name}}</p>
+            <li *ngFor="let item of scheduleList['2']" (click)="openEditDialog(item)">
+                <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             
         </ul>
         <ul >
             <h1>Sala 3</h1>
-            <li *ngFor="let item of scheduleList['3']">
-                <p class="right">{{item.name}}</p>
+            <li *ngFor="let item of scheduleList['3']" (click)="openEditDialog(item)">
+                <p class="name">{{item.name}}</p>
                 <span><p>{{item.startTime}}</p><p>{{item.endTime}}</p></span>
             </li>
             

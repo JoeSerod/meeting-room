@@ -19,6 +19,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {SelectDateService} from "./services/selectDate.service";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import { EditReservationFormComponent } from './components/edit-reservation-form/edit-reservation-form.component';
 
 registerLocaleData(localEs, "es")
 @NgModule({
@@ -27,6 +28,7 @@ registerLocaleData(localEs, "es")
     ScheduleComponent,
     ReservationFormComponent,
     CalendarComponent,
+    EditReservationFormComponent,
   
   ],
   imports: [
